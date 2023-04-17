@@ -1,10 +1,10 @@
 FROM mongo
 
 # Copia el script de inicialización a la imagen
-COPY ./init-mongo.js /docker-entrypoint-initdb.d/
-
-# Expone el puerto por defecto de MongoDB
+COPY . .
 EXPOSE 27017
+
+ENV MONGODB_URI mongodb://mongo:27017/test
 
 # Ejecuta el servicio de MongoDB
 CMD ["mongod"]
