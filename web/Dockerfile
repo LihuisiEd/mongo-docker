@@ -1,18 +1,11 @@
-FROM node:alpine
+FROM node:12
 
-# Create app directory
-WORKDIR /node
+COPY [".", "/usr/src/"]
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package.json .
+WORKDIR /usr/src
 
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
-COPY . .
 
 EXPOSE 3000
-CMD [ "node", "index.js" ]
+
+CMD ["node", "index.js"]
